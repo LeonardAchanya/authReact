@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route, Switch} from 'react-router-dom';
+
+import AuthProvider from './components/Authprovider/Authprovider';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Menu/Home/Home';
+import Profile from './components/Menu/Profile/Profile';
+import Settings from './components/Menu/Settings/Settings';
+import Login from './components/Menu/Login/Login';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
+
+      <AuthProvider>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar/>
+        <Switch>
+          <Route path="/profile" component={Profile}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/logout" component={Settings}/>
+          <Route path="/settings" component={Settings}/>
+          <Route path="/" exact render={Home} />
+          <Route render={()=> <h1>Not Found</h1>} />
+        </Switch>
       </div>
+      </AuthProvider>
+
     );
   }
 }
