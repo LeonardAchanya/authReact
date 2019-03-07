@@ -12,12 +12,13 @@ class AuthProvider extends Component {
       <AuthContext.Provider
         value={{
           state: this.state,
-          logout: () =>
+          logout: () =>{
             this.setState({
               isAuthenticated: false,
               username: null,
               password: null
-            }),
+            })
+          },
           login: () => {
             // console.log('submit')
             if (this.state.username === "admin" && this.state.password === "admin") {
