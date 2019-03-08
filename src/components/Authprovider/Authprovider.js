@@ -5,7 +5,8 @@ class AuthProvider extends Component {
   state = {
     isAuthenticated: false,
     username: null,
-    password: null
+    password: null,
+    error:null
   };
   render() {
     return (
@@ -27,7 +28,11 @@ class AuthProvider extends Component {
                 isAuthenticated: true
               })
             } else {
-              console.log('login not correct')
+              // console.log('login not correct')
+              let msg = <span style={{color:'red'}}>Login details incorrect</span>;
+              this.setState({
+                error: msg
+              })
             }
           },
           userChange: (e) => {

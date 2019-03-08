@@ -12,6 +12,7 @@ const Login = () => {
                 {
                     change => (
                         <div className="box">
+                        {change.state.error}
                             <input type="text" name="username" placeholder="Enter your Username" onChange={change.userChange}></input>
                             <input type="text" name="password" placeholder="Enter your Password" onChange={change.passwordChange}></input>
                             <button type="submit" disabled={!change.state.username || !change.state.password} onClick={change.login}>Login</button>
